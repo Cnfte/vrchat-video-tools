@@ -4,6 +4,10 @@
 
 ---
 
+<img src="https://raw.githubusercontent.com/Cnfte/vrchat-video-tools/refs/heads/main/assets/%7B1E5279BF-08EC-49B3-937D-2F29B4453AB2%7D.png" alt="VRC-VideoTools Logo" width="305" height="215">
+
+---
+
 ## 核心架构与特性
 
 ### 1. Go 并发解析与零拷贝流媒体引擎 (`go-core`)
