@@ -1,4 +1,4 @@
-# ![image](assets/app_logo.png) VRC-VideoTools
+# ![image size=1](assets/app_logo.png) VRC-VideoTools
 
 面向 VRChat 播放器环境的多平台视频直链提取工具与局域网流媒体中继服务。项目采用 Go 语言实现并发解析与 HTTP Range 流式代理后端，配合基于 .NET 9 WPF 的无边框桌面客户端及独立单文件安装程序。
 
