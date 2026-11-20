@@ -1,4 +1,4 @@
-# ![image1](https://raw.githubusercontent.com/Cnfte/vrchat-video-tools/refs/heads/main/assets/app_logo.png =100x100) VRC-VideoTools
+# <img src="https://raw.githubusercontent.com/Cnfte/vrchat-video-tools/refs/heads/main/assets/app_logo.png" alt="VRC-VideoTools Logo" width="100" height="100"> VRC-VideoTools
 
 面向 VRChat 播放器环境的多平台视频直链提取工具与局域网流媒体中继服务。项目采用 Go 语言实现并发解析与 HTTP Range 流式代理后端，配合基于 .NET 9 WPF 的无边框桌面客户端及独立单文件安装程序。
 
