@@ -1,0 +1,361 @@
+<Window x:Class="VRCVideoTools.Installer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        Title="VRC-VideoTools Setup"
+        Height="540" Width="760"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        Foreground="#F4F3EF"
+        FontFamily="Segoe UI Variable Text, Microsoft YaHei UI, sans-serif"
+        Icon="pack://application:,,,/Assets/app.ico">
+
+    <Window.Resources>
+        <Style x:Key="StudioPrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#F3F2EE" />
+            <Setter Property="Foreground" Value="#141416" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Padding" Value="20,0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="BtnBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="10"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Background" Value="#FFFFFF" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Background" Value="#DFDDD6" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.96" ScaleY="0.96" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="StudioSecondaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#222227" />
+            <Setter Property="Foreground" Value="#F0EFEA" />
+            <Setter Property="BorderBrush" Value="#323138" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Padding" Value="18,0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="BtnBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Background" Value="#2B2B32" />
+                                <Setter TargetName="BtnBorder" Property="BorderBrush" Value="#45444D" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Background" Value="#1B1B20" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.96" ScaleY="0.96" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="StudioGhostButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#A5A29B" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Padding" Value="16,0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="BtnBorder" Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BtnBorder" Property="Background" Value="#202025" />
+                                <Setter Property="Foreground" Value="#F4F3EF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="StudioTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="#111114" />
+            <Setter Property="Foreground" Value="#F4F3EF" />
+            <Setter Property="CaretBrush" Value="#F4F3EF" />
+            <Setter Property="BorderBrush" Value="#2C2B30" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Padding" Value="12,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="BoxBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BoxBorder" Property="BorderBrush" Value="#424148" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="BoxBorder" Property="BorderBrush" Value="#636058" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TrafficLightBtnStyle" TargetType="Button">
+            <Setter Property="Width" Value="14" />
+            <Setter Property="Height" Value="14" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="14" Height="14" CornerRadius="7" Background="{TemplateBinding Background}">
+                            <TextBlock x:Name="Glyph" Text="{TemplateBinding Tag}" FontSize="9" FontWeight="Bold" Foreground="#1A1816" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-1,0,0" Opacity="0" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Glyph" Property="Opacity" Value="0.85" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="16">
+        <Border CornerRadius="18" BorderBrush="#2C2B29" BorderThickness="1" ClipToBounds="True">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#19191D" Offset="0" />
+                    <GradientStop Color="#121215" Offset="0.4" />
+                    <GradientStop Color="#101012" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="26" ShadowDepth="6" Opacity="0.55" Color="#000000" />
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Custom Draggable Header Bar -->
+                <Grid Grid.Row="0" Background="Transparent" MouseLeftButtonDown="HeaderBar_MouseLeftButtonDown" Margin="20,0,18,0">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border Width="22" Height="22" CornerRadius="6" Background="#222227" ClipToBounds="True" Margin="0,0,8,0">
+                            <Image Source="pack://application:,,,/Assets/app_logo.png" Stretch="UniformToFill" />
+                        </Border>
+                        <TextBlock Text="VRC·VideoTools 安装程序" FontSize="13" FontWeight="SemiBold" Foreground="#E6E4DE" VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Click="MinimizeBtn_Click" Style="{StaticResource TrafficLightBtnStyle}" Background="#D4A54C" Tag="—" ToolTip="最小化" Margin="0,0,9,0" />
+                        <Button Click="CloseBtn_Click" Style="{StaticResource TrafficLightBtnStyle}" Background="#D96962" Tag="×" ToolTip="关闭" />
+                    </StackPanel>
+                </Grid>
+
+                <!-- Step Content Area -->
+                <Grid Grid.Row="1" Margin="30,6,30,18">
+                    <!-- Step 1: Welcome -->
+                    <Grid Name="Step1Panel" Visibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="0,0,0,18">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Border Background="#1E1E24" CornerRadius="14" Width="54" Height="54" Margin="0,0,16,0" ClipToBounds="True" BorderBrush="#2F2E36" BorderThickness="1">
+                                    <Image Source="pack://application:,,,/Assets/app_logo.png" Stretch="UniformToFill" />
+                                </Border>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="安装 VRC·VideoTools" FontSize="20" FontWeight="SemiBold" Foreground="#F4F3EF" />
+                                    <TextBlock Text="Go 1.26 并发流媒体内核 · 桌面视频直链工坊" FontSize="13" Foreground="#9B9891" Margin="0,4,0,0" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Border Grid.Row="1" Background="#17171B" CornerRadius="14" BorderBrush="#28272D" BorderThickness="1" Padding="22,20">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="核心特性与能力" FontSize="13" FontWeight="SemiBold" Foreground="#DCDAD3" Margin="0,0,0,16" />
+
+                                <Grid Margin="0,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="32" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <ui:SymbolIcon Symbol="Flash24" FontSize="18" Foreground="#F4F3EF" VerticalAlignment="Top" Margin="0,2,0,0" />
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="原生并发流媒体引擎" FontWeight="SemiBold" FontSize="13.5" Foreground="#F4F3EF" />
+                                        <TextBlock Text="微秒级响应与零拷贝 HTTP Range 流式转发，保证 VRChat 房间全员同步流畅不卡顿。" FontSize="12" Foreground="#9B9891" Margin="0,3,0,0" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Margin="0,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="32" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <ui:SymbolIcon Symbol="ShieldCheckmark24" FontSize="18" Foreground="#88C99D" VerticalAlignment="Top" Margin="0,2,0,0" />
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="白名单与移动端 Feed 直连穿透" FontWeight="SemiBold" FontSize="13.5" Foreground="#F4F3EF" />
+                                        <TextBlock Text="直出中文吧 / 中文咖啡厅兼容的 mirrorcos 直链与免防盗链流，零 403、零 412 风控。" FontSize="12" Foreground="#9B9891" Margin="0,3,0,0" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="32" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <ui:SymbolIcon Symbol="ClipboardPaste24" FontSize="18" Foreground="#9CBCE3" VerticalAlignment="Top" Margin="0,2,0,0" />
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="Win32 原生无锁剪贴板联动" FontWeight="SemiBold" FontSize="13.5" Foreground="#F4F3EF" />
+                                        <TextBlock Text="绕过 OLE COM 锁死风险，一键粘贴解析并自动将直链写回剪贴板，游戏内 Ctrl+V 即播。" FontSize="12" Foreground="#9B9891" Margin="0,3,0,0" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <!-- Step 2: Path & Options -->
+                    <Grid Name="Step2Panel" Visibility="Collapsed">
+                        <StackPanel>
+                            <TextBlock Text="选择安装位置与配置" FontSize="19" FontWeight="SemiBold" Foreground="#F4F3EF" Margin="0,0,0,16" />
+
+                            <Border Background="#17171B" CornerRadius="14" BorderBrush="#28272D" BorderThickness="1" Padding="18" Margin="0,0,0,14">
+                                <StackPanel>
+                                    <TextBlock Text="安装目录" FontSize="13" FontWeight="SemiBold" Foreground="#DCDAD3" Margin="0,0,0,8" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Name="InstallPathTextBox" Style="{StaticResource StudioTextBoxStyle}" Height="40" Margin="0,0,10,0" />
+                                        <Button Name="BrowseBtn" Grid.Column="1" Style="{StaticResource StudioSecondaryButton}" Content="浏览…" Click="BrowseBtn_Click" Height="40" Padding="16,0" />
+                                    </Grid>
+                                    <TextBlock Name="SpaceReqText" Text="所需磁盘空间: 约 35 MB" FontSize="12" Foreground="#9B9891" Margin="0,8,0,0" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border Background="#17171B" CornerRadius="14" BorderBrush="#28272D" BorderThickness="1" Padding="18">
+                                <StackPanel>
+                                    <TextBlock Text="系统集成选项" FontSize="13" FontWeight="SemiBold" Foreground="#DCDAD3" Margin="0,0,0,10" />
+                                    <CheckBox Name="DotNetCheck" Content="自动检测并安装 .NET 9 桌面运行库 (缺失时联网补齐)" IsChecked="True" Foreground="#E6E4DE" Margin="0,0,0,8" />
+                                    <CheckBox Name="DesktopShortcutCheck" Content="创建桌面快捷方式" IsChecked="True" Foreground="#E6E4DE" Margin="0,0,0,8" />
+                                    <CheckBox Name="StartMenuCheck" Content="创建开始菜单项" IsChecked="True" Foreground="#E6E4DE" Margin="0,0,0,8" />
+                                    <CheckBox Name="FirewallCheck" Content="配置 Windows 防火墙入站规则 (开放 TCP 9527 局域网串流)" IsChecked="True" Foreground="#E6E4DE" />
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Step 3: Progress -->
+                    <Grid Name="Step3Panel" Visibility="Collapsed">
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="正在安装 VRC·VideoTools" FontSize="19" FontWeight="SemiBold" Foreground="#F4F3EF" Margin="0,0,0,6" />
+                            <TextBlock Name="InstallStatusText" Text="正在准备安装文件…" FontSize="13" Foreground="#9B9891" Margin="0,0,0,18" />
+
+                            <ProgressBar Name="InstallProgressBar" Height="8" Minimum="0" Maximum="100" Value="0" Margin="0,0,0,18" />
+
+                            <Border Background="#17171B" CornerRadius="12" Padding="14" BorderBrush="#28272D" BorderThickness="1">
+                                <TextBlock Name="InstallDetailText" Text="正在初始化环境…" FontFamily="Cascadia Code, Consolas, monospace" FontSize="12" Foreground="#9B9891" />
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Step 4: Done -->
+                    <Grid Name="Step4Panel" Visibility="Collapsed">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Border Background="#1B2A21" BorderBrush="#2D4A38" BorderThickness="1" CornerRadius="30" Width="60" Height="60" HorizontalAlignment="Center" Margin="0,0,0,16">
+                                <ui:SymbolIcon Symbol="Checkmark24" FontSize="28" Foreground="#88C99D" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <TextBlock Text="安装已就绪" FontSize="20" FontWeight="SemiBold" Foreground="#F4F3EF" HorizontalAlignment="Center" Margin="0,0,0,6" />
+                            <TextBlock Text="全部组件与防火墙规则配置完毕，即可开始使用。" FontSize="13" Foreground="#9B9891" HorizontalAlignment="Center" Margin="0,0,0,22" />
+                            <CheckBox Name="LaunchAfterInstallCheck" Content="立即启动 VRC·VideoTools" IsChecked="True" Foreground="#F4F3EF" FontSize="13" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <!-- Footer Navigation Bar -->
+                <Border Grid.Row="2" Background="#141417" BorderBrush="#222127" BorderThickness="0,1,0,0" Padding="24,14">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="VRC-VideoTools Studio · v2.1" VerticalAlignment="Center" FontSize="12" Foreground="#8A8780" />
+
+                        <Button Name="PrevBtn" Grid.Column="1" Style="{StaticResource StudioSecondaryButton}" Content="上一步" Click="PrevBtn_Click" Visibility="Collapsed" Height="38" MinWidth="88" Margin="0,0,8,0" />
+                        <Button Name="NextBtn" Grid.Column="2" Style="{StaticResource StudioPrimaryButton}" Content="下一步" Click="NextBtn_Click" Height="38" MinWidth="96" Margin="0,0,8,0" />
+                        <Button Name="CancelBtn" Grid.Column="3" Style="{StaticResource StudioGhostButton}" Content="取消" Click="CancelBtn_Click" Height="38" MinWidth="74" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

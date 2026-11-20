@@ -1,0 +1,27 @@
+# Build outputs & binaries
+dist/
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.zip
+*.log
+logs/
+
+# Visual Studio / IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Installer generated payload
+installer/Resources/payload.zip
+
+# Go compiled binary
+go-core/vrc-video-core.exe
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
